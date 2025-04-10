@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}" type="text/css">
+    <title>Калькулятор ипотеки</title>
+</head>
+<body>
+<div class="text">
+    <h1>Калькулятор ипотеки</h1>
+</div>
+<div class="text">
+    <h2>Расчет по времени</h2>
+</div>
+<form action="/kalk2">
+    <button type="submit" class="btn btn-primary"
+            style="background-color: #3CAA3C; border: 1px solid black; color: black">Расчёт по платежу
+    </button>
+</form>
+<h4 style="color: red"> {{ error }} </h4>
+<div class="container">
+    <form action="" method="post" id="form">
+        <p>
+            <label>Тип ежемесячных платежей </label>
+            <select name="a_or_d" id="a_or_d" form="form">
+                    <option value="a"> Аннуитетные </option>
+                    <option value="d"> Дифференцированные </option>
+            </select>
+        </p>
+        <label for="sum">Стоимость недвижимости:</label>
+        <input type="text" class="form-control" id="sum" placeholder="0" name="sum">
+        <label for="percent">Введите годовой процент:</label>
+        <input type="text" class="form-control" id="percent" placeholder="0" name="percent">
+        <p>
+            <label>Введите количество </label>
+            <select name="select" id="select" form="form">
+                <option value="year"> лет </option>
+                <option value="month"> месяцев </option>
+            </select>
+            <input type="text" class="form-control" id="time" placeholder="0" name="time">
+        <label for="cont">Введите первоначальный взнос:</label>
+        <input type="text" class="form-control" id="cont" placeholder="0" name="cont">
+        </p>
+        <div>
+            <button type="submit" class="btn btn-primary"
+            style="background-color: #3CAA3C; border: 1px solid black; color: black">Рассчитать</button>
+        </div>
+        {% if (( count > 0)) %}
+            <label> Переплата = {{ overpayment }}</label>
+        {% endif %}
+    </form>
+</div>
+{% if (( count > 0)) %}
+    <div class="text_table">
+        <h2>Таблица погашения</h2>
+        <table>
+            <tr><th>Месяц</th><th>Сумма платежа</th><th>Платеж по основному долгу</th><th>Платеж по процениту</th><th>Остаток долга</th></tr>
+            {% for elem in range(count) %}
+            <tr><td>{{ db[elem][0] }}</td><td>{{ db[elem][1] }} ₽</td><td>{{ db[elem][2] }} ₽</td><td>{{ db[elem][3] }} ₽</td><td>{{ db[elem][4] }} ₽</td></tr>
+            {% endfor %}
+            <tr><td> </td><td>Выплачено всего {{total[0]}} ₽</td><td>Сумма выплаченного долга {{total[1]}} ₽</td><td>Сумма выплаченных процентов {{total[2]}} ₽</td><td> </td></tr>
+        </table>
+    </div>
+{% endif %}
+</body>
+</html>
