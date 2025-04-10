@@ -1,0 +1,61 @@
+body {
+     background: #202020;
+     position: relative;
+     text-align: center;
+}
+
+.text {
+    color: #3CAA3C
+}
+
+.text_table {
+    color: #3CAA3C
+}
+
+.text_table {
+    text-align: center;
+}
+
+table {
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    border-top: 7px solid rgb(43, 129, 17);
+    margin-bottom: 20px;
+    margin: 0 auto;
+    border: 1px solid #3CAA3C;
+}
+
+td {
+    text-align: center;
+    padding: 10px;
+    border: 3px solid rgb(43, 129, 17);
+}
+
+th {
+    text-align: center;
+    padding: 10px;
+   	border: 3px solid rgb(43, 129, 17);
+   	background: #404040
+ }
+
+.container {
+    position: relative;
+    text-align: center;
+    background-color: #404040;
+    max-width: 500px;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 10px
+
+}
+
+label {
+    color: #3CAA3C
+}
+
+select {
+    color: #3CAA3C;
+    border: 3px solid rgb(43, 129, 17);
+   	background: #404040;
+}
