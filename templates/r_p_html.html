@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+        crossorigin="anonymous">
+        <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}" type="text/css">
+    <title>Калькулятор ипотеки</title>
+</head>
+<body>
+<div class="text">
+    <h1>Калькулятор ипотеки</h1>
+</div>
+<div class="text">
+    <h2>Расчет по платежу</h2>
+</div>
+<form action="/kalk1">
+    <button type="submit" class="btn btn-primary"
+            style="background-color: #3CAA3C; border: 1px solid black; color: black">Расчёт по времени
+    </button>
+</form>
+<h4 style="color: red"> {{ error }} </h4>
+<div class="container">
+    <label style="color: red"> ! </label><label> Для аннуитетного типа платежей </label><label style="color: red"> ! </label>
+    <form action="" method="post" id="form">
+        <label for="sum">Стоимость недвижимости:</label>
+        <input type="text" class="form-control" id="sum" placeholder="0" name="sum">
+        <label for="percent">Введите годовой процент:</label>
+        <input type="text" class="form-control" id="percent" placeholder="0" name="percent">
+        <label for="ejemes_plata"> Введите ежемесячный платеж</label>
+        <input type="text" class="form-control" id="ejemes_plata" placeholder="0" name="ejemes_plata">
+        <label for="cont">Введите первоначальный взнос:</label>
+        <input type="text" class="form-control" id="cont" placeholder="0" name="cont">
+        <h4></h4>
+        <div>
+            <button type="submit" class="btn btn-primary"
+                    style="background-color: #3CAA3C; border: 1px solid black; color: black">Рассчитать
+            </button>
+        </div>
+    </form>
+    {% if (( overpayment )) %}
+        <label class="l1"> Переплата = {{ overpayment }} </label>
+        <div>
+        <label class="l2"> Года = {{ years }} </label>
+        </div>
+        <label class="l3"> Месяца = {{ months }} </label>
+    {% endif %}
+</div>
+</body>
+</html>
